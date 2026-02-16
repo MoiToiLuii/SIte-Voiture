@@ -1,67 +1,102 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<!-- En-tête du site -->
 <head> 
     <meta charset="UTF-8">
     <title>Site Voiture</title>
+    <link rel="stylesheet" href="style.css">
+    
 </head>
 
 <body>
 
-<!-- Titre -->
+<!-- Header -->
 <header>
     <h1>Ma boutique</h1>
 </header>
 
-<!-- Lien de navigation -->
+<!-- Navigation -->
 <nav>
     <a href="index.html">Accueil</a>
     <a href="pages/liste.html">Liste</a>
     <a href="pages/location.html">Locations</a>
     <a href="pages/admin.html">Admin</a>
+    <a href="pages/login.html">Login</a>
 </nav>
 
-<!-- Le coeur du site -->
+<!-- Image Hero -->
+<section class="hero">
+    <h1> Trouver et louer votre voiture <br> en toute simplicité 
+    </h1>
+</section>
+
+<!-- Contenu principal -->
 <main>
+    
+        <h2>Bienvenue sur notre site de Voiture</h2>
 
-    <h2>Bienvenue sur notre site de Voiture</h2>
-
-    <p>
+        <p>
         Ce site a pour objectif de présenter un catalogue de voitures,
         incluant leurs caractéristiques principales, tout en proposant
         une option de location.
-    </p>
+        </p>
 
-    <p>
+        <p>
         Découvrez différentes voitures, leurs descriptions détaillées
         et les possibilités de location proposées.
-    </p>
-
-    <section>
-        <h3>Comment ça fonctionne ?</h3>
-
-        <p>
-            L’utilisateur peut consulter le catalogue, comparer les véhicules
-            et choisir celui qui correspond à ses besoins.
         </p>
 
-        <p>
-            La navigation est simple et intuitive : consultation des voitures,
-            lecture des descriptions et sélection du véhicule.
-        </p>
+        <section>
+            <h3>Comment ça fonctionne ?</h3>
+
+            <p>
+                L’utilisateur peut consulter le catalogue, comparer les véhicules
+                et choisir celui qui correspond à ses besoins.
+            </p>
+
+            <p>
+                La navigation est simple et intuitive : consultation des voitures,
+                lecture des descriptions et sélection du véhicule.
+            </p>
+        </section>
+
+        <section>
+            <h3>Projet étudiant</h3>
+            <p>
+                Ce site est un projet étudiant réalisé dans le cadre d’une formation
+                en développement web. Il permet de mettre en pratique les compétences
+                acquises en HTML,CSS,Javascript et PHP.
+            </p>
+            <p>
+                Les informations présentées sont fournies à titre d’exemple.
+            </p>
+        </section>
+
+
+    <!-- Avis clients -->
+    <section class="avis">
+        <h2>Avis clients</h2>
+
+        <div class="commentaire">
+            <div class="etoiles">★★★★★</div>
+            <p>Service rapide et très professionnel. Large choix de véhicules. – Karim B.</p>
+        </div>
+
+        <div class="commentaire">
+            <div class="etoiles">★★★★★</div>
+            <p>Très bonne expérience, site simple et efficace. – Sarah M.</p>
+        </div>
+
+        <div class="commentaire">
+            <div class="etoiles">★★★★★</div>
+            <p>Location facile et rapide, je recommande vivement. – Thomas L.</p>
+        </div>
+
     </section>
-
-    <p>
-        Ce site est réalisé dans un cadre pédagogique.
-        Les informations présentées sont fournies à titre d’exemple.
-    </p>
 
 </main>
 
-</body>
-
-<!-- Pied de page -->
+<!-- Footer -->
 <footer> 
     <nav>
         <a href="pages/faq.html">FAQ</a>
@@ -70,4 +105,6 @@
     </nav>
 </footer>
 
+</body>
 </html>
+
