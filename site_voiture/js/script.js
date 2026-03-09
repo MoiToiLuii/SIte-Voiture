@@ -26,3 +26,21 @@ function afficherAvis() {
 
 afficherAvis();
 setInterval(afficherAvis, 4000);
+
+// essaie comme Sixt
+document.addEventListener("DOMContentLoaded", function() {
+
+    const buttons = document.querySelectorAll(".btn-details");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", function() {
+
+            const details = this.parentElement.querySelector(".details");
+
+            details.classList.toggle("active");
+
+        });
+    });
+
+});
+
