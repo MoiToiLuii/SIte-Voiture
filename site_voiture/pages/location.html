@@ -1,47 +1,100 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-<!-- En-tête du site -->
-<head> 
+<head>
     <meta charset="UTF-8">
-    <title> Site Voiture </title>
+    <title>Location</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 
-<!-- Titre -->
 <header>
-    <h1>Site Voiture</h1>
+    <h1>Nos voitures disponibles</h1>
 </header>
 
-<!-- Lien de navigation -->
+<!-- Navigation ajoutée -->
 <nav>
-    <a href="../index.html">Accueil</a>
-    <a href="liste.html">Liste</a>
-    <a href="location.html">Locations</a>
-    <a href="admin.html">Admin</a>
+    <a href="/index.html">Accueil</a>
+    <a href="/pages/liste.html">Liste</a>
+    <a href="/pages/location.html">Locations</a>
+    <a href="/pages/admin.html">Admin</a>
+    <a href="/pages/login.html">Login</a>
 </nav>
 
-<!-- Le coeur du site -->
+<main>
 
+<section class="grid-voitures">
 
+    <!-- Carte voiture -->
+    <div class="carte">
+        <img src="/images/clio.jpg" alt="Renault Clio 5">
+        <h3>Renault Clio</h3>
+        <button onclick="ouvrirPopup('clio')">Descriptif</button>
+    </div>
+
+    <div class="carte">
+         <img src="/images/208.jpg" alt="Peugeot 208">
+        <h3>Peugeot 208</h3>
+        <button onclick="ouvrirPopup('208')">Descriptif</button>
+    </div>
+
+    <div class="carte">
+        <img src="/images/Hyundai-i20.png" alt="Hyundai-i20">
+        <h3>Hyundai i20</h3>
+        <button onclick="ouvrirPopup('i20')">Descriptif</button>
+    </div>
+
+    <div class="carte">
+         <img src="/images/Yaris.jpg" alt="Toyota Yaris">
+        <h3>Toyota Yaris</h3>
+        <button onclick="ouvrirPopup('yaris')">Descriptif</button>
+    </div>
+
+    <div class="carte">
+        <img src="/images/vwpolo.png" alt="Volkswagen Polo">
+        <h3>Volkswagen Polo</h3>
+        <button onclick="ouvrirPopup('polo')">Descriptif</button>
+    </div>
+
+    <div class="carte">
+        <img src="/images/ford-focus.jpg" alt="Ford Focus">
+        <h3>Ford Focus</h3>
+        <button onclick="ouvrirPopup('focus')">Descriptif</button>
+    </div>
+
+</section>
+
+</main>
+
+<!-- Popup -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="fermerPopup()">&times;</span>
+        <div id="contenu-popup"></div>
+    </div>
+</div>
+
+<script>
+function ouvrirPopup(modele) {
+    const contenu = document.getElementById("contenu-popup");
+
+    const descriptions = {
+        clio: "Renault Clio – Citadine polyvalente, idéale pour la ville et les trajets quotidiens. Très faible consommation, excellente maniabilité. Puissance : environ 90 ch.",
+        208: "Peugeot 208 – Moderne, confortable et dynamique. Très agréable à conduire, parfaite pour un usage urbain et périurbain. Puissance : environ 100 ch.",
+        i20: "Hyundai i20 – Fiable, économique et bien équipée. Très bon rapport qualité/prix, idéale pour les conducteurs recherchant simplicité et efficacité. Puissance : environ 84 ch.",
+        yaris: "Toyota Yaris GR – Version sportive dérivée du rallye, dotée d’un moteur 1.6 turbo de 261 ch, transmission intégrale et comportement ultra dynamique. Une petite bombe taillée pour les sensations fortes.",
+        polo: "Volkswagen Polo – Finition haut de gamme, confort allemand et tenue de route exemplaire. Très stable sur autoroute. Puissance : environ 95 ch.",
+        focus: "Ford Focus – Compacte polyvalente, idéale pour la ville comme pour les longs trajets. Très bonne tenue de route et moteur réactif. Puissance : environ 120 ch."
+    };
+
+    contenu.innerHTML = "<p>" + descriptions[modele] + "</p>";
+    document.getElementById("popup").style.display = "flex";
+}
+
+function fermerPopup() {
+    document.getElementById("popup").style.display = "none";
+}
+</script>
 
 </body>
-
-
-
-
-
-
-
-<footer> 
-<!-- Lien de navigation bas de page -->
-<nav>
-    <a href="faq.html">FAQ</a>
-    <a href="mentions.html">Mentions légales</a>
-    <a href="information.html">Divers information</a>
-</nav>
-
-</footer>
-
 </html>
