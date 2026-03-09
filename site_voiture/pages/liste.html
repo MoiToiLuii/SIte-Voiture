@@ -4,16 +4,15 @@
 <!-- En-tête du site -->
 <head> 
     <meta charset="UTF-8">
-    <title> Site Voiture </title>
+    <title>Site Voiture</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-
-<!-- Titre -->
+<!-- Header -->
 <header>
-    <h1>Site Voiture</h1>
+    <h1>Nos véhicules disponibles</h1>
 </header>
-
 <!-- Lien de navigation -->
 <nav>
     <a href="../index.html">Accueil</a>
@@ -24,22 +23,31 @@
 
 <!-- Le coeur du site -->
 
-<header>
-    <h2>Voici nos véhicules disponibles</h2>
-</header>
-
 <div class="catalogue">
     <div class="voiture">
         <div class="image-box">
             <img src="../images/Mercedes-classe-C.png" alt="Mercedes Classe C">
         </div>
+        <!-- Ici c'est le bouton --><button class="btn-details">Voir détails</button>
         <h2>
-             <a href="Voitures/mercedes-classe-c.html">Mercedes Classe C</a>
+            Mercedes Classe C
         </h2>
 
         <p>Prix : 150€/jour</p>
+        <!-- la la description du bouton-->
+        <div class="details">
+            <p><strong>Info :</strong> C'est une voiture très jolie </p>
+            <p><strong>Moteur :</strong> Diesel 190ch</p>
+            <p><strong>Boîte :</strong> Automatique</p>
+            <p><strong>Prix :</strong> 150€/jour</p>
+            <button class="reserver">Réserver</button> <!-- Pas fonctionnel encore-->
+        </div>
     </div>
-</div>
+
+
+
+
+
 
 
 
@@ -60,5 +68,8 @@
 </nav>
 
 </footer>
+
+<!-- Lien pour JS-->
+ <script src="../js/script.js"></script>
 
 </html>
