@@ -1,36 +1,136 @@
 <!DOCTYPE html>
 <html lang="fr">
+<!-- 
+    Déclare que le document utilise le standard HTML5.
+    L’attribut lang="fr" indique que le contenu principal est en français,
+    ce qui aide les navigateurs, moteurs de recherche et lecteurs d'écran.
+-->
+
 <head>
+    <!-- 
+        La balise <head> contient toutes les informations invisibles pour l’utilisateur :
+        - encodage
+        - titre de la page
+        - liens vers les fichiers CSS
+        - scripts éventuels
+        - métadonnées SEO
+    -->
+
     <meta charset="UTF-8">
+    <!-- 
+        Définit l'encodage UTF‑8, indispensable pour afficher correctement
+        les accents et caractères spéciaux utilisés en français.
+    -->
+
     <title>Location de voitures – Premium Cars</title>
+    <!-- 
+        Titre affiché dans l’onglet du navigateur.
+        Important pour l'identité du site et le référencement.
+    -->
+
     <link rel="stylesheet" href="/css/style.css">
+    <!-- 
+        Lien vers ton fichier CSS principal.
+        Le chemin /css/style.css signifie que le dossier "css" est à la racine du site.
+    -->
 </head>
 
 <body>
+<!-- 
+    Tout ce que l’utilisateur voit se trouve dans <body>.
+    On y place le header, la navigation, le contenu principal, le footer, etc.
+-->
 
 <header class="header">
+    <!-- 
+        En‑tête du site.
+        Contient le nom du service et un sous‑titre.
+        Le style visuel est géré dans ton CSS.
+    -->
+
     <h1>🚗 Premium Car Rental</h1>
+    <!-- 
+        Titre principal de la page.
+        L’emoji voiture ajoute une touche visuelle sympa.
+    -->
+
     <p>Découvrez nos véhicules disponibles à la location</p>
+    <!-- 
+        Sous‑titre explicatif.
+        Permet d’introduire le contenu de la page.
+    -->
 </header>
 
 <!-- Lien de navigation -->
-
 <nav class="navbar">
+    <!-- 
+        Barre de navigation principale.
+        Permet de se déplacer entre les pages du site.
+        Les liens sont stylisés via la classe .navbar dans ton CSS.
+    -->
+
     <a href="../index.html">Accueil</a>
+    <!-- 
+        Lien vers la page d’accueil.
+        ../ signifie "remonter d’un dossier".
+    -->
+
     <a href="location.html">Locations</a>
+    <!-- 
+        Lien vers la page actuelle (liste des voitures à louer).
+    -->
+
     <a href="login.html">Login</a>
+    <!-- 
+        Lien vers la page de connexion.
+        Peut servir pour un espace admin ou client.
+    -->
 </nav>
 
 <main>
+<!-- 
+    Balise <main> : contient le contenu principal unique de la page.
+    Très utile pour l’accessibilité et le SEO.
+-->
 
 <section class="grid-voitures">
+    <!-- 
+        Section contenant toutes les cartes de voitures.
+        La classe grid-voitures applique une grille responsive via CSS.
+    -->
 
     <!-- Carte voiture -->
     <div class="carte">
+        <!-- 
+            Une carte représente un véhicule.
+            Elle contient une image, un titre et un bouton descriptif.
+        -->
+
         <img src="/images/clio.jpg" alt="Renault Clio 5">
+        <!-- 
+            Image du véhicule.
+            L’attribut alt est important pour l’accessibilité.
+        -->
+
         <h3>Renault Clio</h3>
+        <!-- 
+            Nom du modèle affiché sous l’image.
+        -->
+
         <button onclick="ouvrirPopup('clio')">Descriptif</button>
+        <!-- 
+            Bouton qui ouvre une popup descriptive.
+            Il appelle la fonction JS ouvrirPopup() avec l’identifiant du modèle.
+        -->
     </div>
+
+    <!-- 
+        Toutes les cartes suivantes suivent exactement la même structure.
+        Seuls changent :
+        - l’image
+        - le nom du modèle
+        - l’identifiant passé à ouvrirPopup()
+    -->
 
     <div class="carte">
         <img src="/images/208.jpg" alt="Peugeot 208">
@@ -122,21 +222,45 @@
 
 <!-- Popup -->
 <div id="popup" class="popup">
+    <!-- 
+        Conteneur global du popup.
+        Il est masqué par défaut via CSS (display:none).
+        Quand on clique sur un bouton, JS change display en "flex".
+    -->
+
     <div class="popup-content">
+        <!-- 
+            Contenu interne du popup :
+            - fond blanc
+            - bordure
+            - arrondis
+            - zone où sera injecté le texte descriptif
+        -->
+
         <span class="close" onclick="fermerPopup()">&times;</span>
+        <!-- 
+            Bouton de fermeture du popup.
+            Le symbole × est généré via &times;.
+        -->
+
         <div id="contenu-popup"></div>
+        <!-- 
+            Zone où JS insère dynamiquement la description du véhicule.
+        -->
     </div>
 </div>
 
-
-
 <!-- SCRIPT COMPLET -->
 <script>
-
 /* -------------------------
    DESCRIPTIONS DES VOITURES
 -------------------------- */
 
+/*
+    Objet contenant toutes les descriptions.
+    Chaque clé correspond à l’identifiant passé dans ouvrirPopup().
+    Chaque valeur est un texte affiché dans la popup.
+*/
 const descriptions = {
     clio: "Renault Clio – Citadine polyvalente, idéale pour la ville et les trajets quotidiens. Très faible consommation, excellente maniabilité. Puissance : environ 90 ch.",
     208: "Peugeot 208 – Moderne, confortable et dynamique. Très agréable à conduire, parfaite pour un usage urbain et périurbain. Puissance : environ 100 ch.",
@@ -160,12 +284,23 @@ const descriptions = {
    POPUP DESCRIPTIF
 -------------------------- */
 
+/*
+    Fonction appelée lorsqu’on clique sur un bouton "Descriptif".
+    Elle :
+    - récupère la description correspondant au modèle
+    - l’insère dans la zone #contenu-popup
+    - affiche la popup en changeant display:none → display:flex
+*/
 function ouvrirPopup(modele) {
     const contenu = document.getElementById("contenu-popup");
     contenu.innerHTML = `<p>${descriptions[modele]}</p>`;
     document.getElementById("popup").style.display = "flex";
 }
 
+/*
+    Fonction qui ferme la popup.
+    Elle remet display:none sur le conteneur #popup.
+*/
 function fermerPopup() {
     document.getElementById("popup").style.display = "none";
 }
@@ -176,10 +311,17 @@ function fermerPopup() {
 
 <!-- Footer -->
 <footer> 
+    <!-- 
+        Pied de page du site.
+        Contient des liens secondaires (FAQ, mentions légales, etc.).
+    -->
+
     <nav>
         <a href="faq.html">FAQ</a>
         <a href="mentions.html">Mentions légales</a>
         <a href="information.html">Divers information</a>
     </nav>
 </footer>
+
 </html>
+
