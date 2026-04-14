@@ -1,12 +1,6 @@
 /* -------------------------------------------------------------------------- */
 /* ----------------------------- RESET DE BASE ------------------------------- */
 /* -------------------------------------------------------------------------- */
-
-/* 
-   Le reset permet d'annuler les marges et paddings par défaut des navigateurs.
-   box-sizing: border-box permet de calculer les tailles en incluant les bordures
-   et paddings dans la largeur totale, ce qui simplifie énormément la mise en page.
-*/
 * {
     margin: 0;
     padding: 0;
@@ -16,14 +10,6 @@
 /* -------------------------------------------------------------------------- */
 /* ----------------------------- STYLES GLOBAUX ------------------------------ */
 /* -------------------------------------------------------------------------- */
-
-/* 
-   Style général du body :
-   - police sans-serif
-   - fond gris clair
-   - couleur de texte principale bleu foncé
-   - line-height pour améliorer la lisibilité
-*/
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #f5f5f5;
@@ -35,39 +21,56 @@ body {
 /* --------------------------------- HEADER --------------------------------- */
 /* -------------------------------------------------------------------------- */
 
-/*
-   Header principal du site :
-   - fond bleu foncé
-   - texte blanc
-   - padding interne
-   - logo en background centré
-   - hauteur fixe
-   - bordure inférieure bleu clair
-*/
+
+
+
 header {
+    position: relative;
     background-color: #0A1931;
     color: white;
-    padding: 15px;
+    height: 150px;
+    padding-top: 15px;
+
+    /* ✔ Logo centré */
     background-image: url("../images/Logo.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100px;
-    height: 150px;
+
     border-bottom: 3px solid #4A7FA7;
 }
+
+/* ✔ RentaKar en haut à gauche */
+header h1 {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 28px;
+    margin: 0;
+}
+
+/* ✔ Slogan en haut à droite, aligné avec RentaKar */
+header .slogan {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #4A7FA7;
+}
+
+
+
+
+
+
+
+
+
 
 /* -------------------------------------------------------------------------- */
 /* ------------------------------- NAVIGATION -------------------------------- */
 /* -------------------------------------------------------------------------- */
-
-/*
-   Barre de navigation :
-   - affichage en flex pour aligner les liens horizontalement
-   - centrage horizontal et vertical
-   - espace entre les liens (gap)
-   - fond bleu foncé
-   - bordure inférieure bleu clair
-*/
 nav {
     display: flex;
     justify-content: center;
@@ -78,12 +81,6 @@ nav {
     border-bottom: 2px solid #4A7FA7;
 }
 
-/*
-   Style des liens du menu :
-   - couleur bleu clair
-   - texte en gras
-   - transition pour l’effet hover
-*/
 nav a {
     color: #4A7FA7;
     text-decoration: none;
@@ -92,11 +89,6 @@ nav a {
     transition: 0.3s;
 }
 
-/*
-   Effet hover :
-   - texte devient blanc
-   - petite bordure animée sous le lien
-*/
 nav a:hover {
     color: #ffffff;
     border-bottom: 2px solid #4A7FA7;
@@ -106,14 +98,6 @@ nav a:hover {
 /* -------------------------------------------------------------------------- */
 /* ------------------------------- SECTION HERO ------------------------------ */
 /* -------------------------------------------------------------------------- */
-
-/*
-   Grande bannière d’accueil :
-   - image de fond couvrante
-   - hauteur fixe
-   - centrage du texte
-   - position relative pour overlay
-*/
 .hero {
     background: url("../images/fond_ecran_accueil.jpeg") center/cover no-repeat;
     height: 400px;
@@ -124,9 +108,6 @@ nav a:hover {
     color: white;
 }
 
-/*
-   Overlay sombre pour améliorer la lisibilité du texte
-*/
 .hero::after {
     content: "";
     position: absolute;
@@ -134,12 +115,6 @@ nav a:hover {
     background: rgba(0, 0, 0, 0.5);
 }
 
-/*
-   Texte du hero :
-   - position relative pour passer au-dessus de l’overlay
-   - grande taille de police
-   - espacement des lettres
-*/
 .hero h1 {
     position: relative;
     z-index: 2;
@@ -151,13 +126,6 @@ nav a:hover {
 /* -------------------------------------------------------------------------- */
 /* ---------------------------------- MAIN ---------------------------------- */
 /* -------------------------------------------------------------------------- */
-
-/*
-   Conteneur principal :
-   - largeur max 1000px
-   - centré automatiquement
-   - padding interne
-*/
 main {
     max-width: 1000px;
     margin: 40px auto;
@@ -167,13 +135,10 @@ main {
 /* -------------------------------------------------------------------------- */
 /* ------------------------------- TITRES & TEXTE ---------------------------- */
 /* -------------------------------------------------------------------------- */
-
-/* Marges inférieures pour espacer les titres */
 h1, h2, h3 {
     margin-bottom: 15px;
 }
 
-/* Marges inférieures pour espacer les paragraphes */
 p {
     margin-bottom: 15px;
 }
@@ -181,13 +146,6 @@ p {
 /* -------------------------------------------------------------------------- */
 /* ------------------------------ SECTION AVIS ------------------------------- */
 /* -------------------------------------------------------------------------- */
-
-/*
-   Section contenant les avis :
-   - fond gris clair
-   - padding interne
-   - bordures arrondies
-*/
 .avis {
     background-color: #f5f5f5;
     padding: 30px;
@@ -195,18 +153,11 @@ p {
     border-radius: 8px;
 }
 
-/* Titre centré */
 .avis h2 {
     text-align: center;
     margin-bottom: 25px;
 }
 
-/*
-   Conteneur du diaporama :
-   - centré
-   - hauteur fixe
-   - overflow hidden pour masquer les transitions
-*/
 #avis-dynamique {
     display: flex;
     justify-content: center;
@@ -215,13 +166,6 @@ p {
     overflow: hidden;
 }
 
-/*
-   Carte d’avis :
-   - fond blanc
-   - padding
-   - ombre portée
-   - animation d’apparition
-*/
 .carte-avis {
     background: #ffffff;
     padding: 20px 30px;
@@ -233,17 +177,10 @@ p {
     transform: translateY(30px);
 }
 
-/*
-   Classe appliquée par JS pour déclencher l’animation
-*/
 .animate {
     animation: slideFade 0.5s ease forwards;
 }
 
-/*
-   Animation d’apparition façon PowerPoint :
-   - montée + fade-in
-*/
 @keyframes slideFade {
     0% {
         opacity: 0;
@@ -258,14 +195,12 @@ p {
     }
 }
 
-/* Étoiles de notation */
 .etoiles {
     font-size: 24px;
     color: gold;
     margin-bottom: 10px;
 }
 
-/* Bouton générique */
 .bouton {
     display: inline-block;
     background-color: #4A7FA7;
@@ -276,7 +211,6 @@ p {
     margin-top: 10px;
 }
 
-/* Effet hover du bouton */
 .bouton:hover {
     background-color: #1A3D63;
 }
@@ -284,13 +218,6 @@ p {
 /* -------------------------------------------------------------------------- */
 /* --------------------------------- FOOTER --------------------------------- */
 /* -------------------------------------------------------------------------- */
-
-/*
-   Pied de page :
-   - fond bleu foncé
-   - texte blanc
-   - bordure supérieure bleu clair
-*/
 footer {
     background-color: #0A1931;
     color: white;
@@ -299,7 +226,6 @@ footer {
     border-top: 2px solid #4A7FA7;
 }
 
-/* Centrage des liens du footer */
 footer nav {
     justify-content: center;
 }
@@ -307,12 +233,6 @@ footer nav {
 /* -------------------------------------------------------------------------- */
 /* --------------------------- SECTION VOITURES ------------------------------ */
 /* -------------------------------------------------------------------------- */
-
-/*
-   Grille responsive :
-   - auto-fit = s’adapte automatiquement
-   - minmax = largeur minimale 260px
-*/
 .grid-voitures {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -320,13 +240,6 @@ footer nav {
     margin: 40px;
 }
 
-/*
-   Carte de voiture :
-   - fond blanc
-   - ombre
-   - arrondis
-   - transition pour hover
-*/
 .carte {
     background-color: white;
     padding: 20px;
@@ -337,14 +250,12 @@ footer nav {
     border: 1px solid #d9d9d9;
 }
 
-/* Effet hover premium */
 .carte:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     border-color: #4A7FA7;
 }
 
-/* Image de la carte */
 .carte img {
     width: 100%;
     height: 150px;
@@ -352,15 +263,15 @@ footer nav {
     border-radius: 8px;
 }
 
-/* Titre de la carte */
 .carte h3 {
     margin: 15px 0;
     font-size: 1.3rem;
     color: #0A1931;
 }
 
-/* Bouton de la carte */
-.carte button {
+/* ---------------------------- BOUTONS VOITURES ---------------------------- */
+/* Style pour le bouton "Descriptif" (bleu) */
+.carte button:not(.bouton-louer) {
     margin-top: 15px;
     padding: 10px 15px;
     background-color: #4A7FA7;
@@ -371,20 +282,32 @@ footer nav {
     transition: 0.3s;
 }
 
-/* Hover du bouton */
-.carte button:hover {
+.carte button:not(.bouton-louer):hover {
     background-color: #1A3D63;
+}
+
+/* Style pour le bouton "Louer" (ROUGE) - Priorité maximale */
+.carte .bouton-louer {
+    background-color: #ff0000 !important;
+    color: white !important;
+    padding: 10px 15px !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    margin-left: 10px !important;
+    margin-top: 15px !important;
+    transition: 0.3s !important;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.carte .bouton-louer:hover {
+    background-color: #cc0000 !important;
 }
 
 /* -------------------------------------------------------------------------- */
 /* --------------------------------- POPUP ---------------------------------- */
 /* -------------------------------------------------------------------------- */
-
-/*
-   Fond sombre du popup :
-   - position fixed pour couvrir tout l’écran
-   - display:none par défaut
-*/
 .popup {
     display: none;
     position: fixed;
@@ -394,12 +317,6 @@ footer nav {
     align-items: center;
 }
 
-/*
-   Contenu du popup :
-   - fond blanc
-   - bordure bleue
-   - arrondis
-*/
 .popup-content {
     background: white;
     padding: 30px;
@@ -409,7 +326,6 @@ footer nav {
     border: 2px solid #4A7FA7;
 }
 
-/* Bouton de fermeture */
 .close {
     position: absolute;
     right: 15px;
@@ -420,15 +336,53 @@ footer nav {
     font-weight: bold;
 }
 
+/* ---------------------------- POPUP LOCATION ---------------------------- */
+#popup-location .popup-content {
+    width: 500px;
+    max-width: 90%;
+}
+
+#popup-location h2 {
+    margin-bottom: 20px;
+    color: #0A1931;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.bouton-confirm {
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+}
+
+.bouton-confirm:hover {
+    background-color: #27ae60;
+}
+
 /* -------------------------------------------------------------------------- */
 /* ---------------------- SECTION INTRO (IMAGE À GAUCHE) --------------------- */
 /* -------------------------------------------------------------------------- */
-
-/*
-   Section avec image à gauche et texte à droite :
-   - flex pour aligner horizontalement
-   - gap pour espacer
-*/
 .intro-section {
     display: flex;
     gap: 30px;
@@ -436,11 +390,6 @@ footer nav {
     align-items: center;
 }
 
-/*
-   Image de présentation :
-   - background-image (image 2.png)
-   - arrondis + ombre
-*/
 .intro-image {
     flex: 1;
     height: 280px;
@@ -451,19 +400,16 @@ footer nav {
     box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
-/* Bloc texte */
 .intro-texte {
     flex: 1;
     color: #1A3D63;
 }
 
-/* Titre */
 .intro-texte h2 {
     color: #0A1931;
     margin-bottom: 15px;
 }
 
-/* Paragraphes */
 .intro-texte p {
     margin-bottom: 15px;
 }
@@ -471,12 +417,6 @@ footer nav {
 /* -------------------------------------------------------------------------- */
 /* ------------------------------- RESPONSIVE -------------------------------- */
 /* -------------------------------------------------------------------------- */
-
-/*
-   Sur mobile :
-   - la section passe en colonne
-   - l’image prend toute la largeur
-*/
 @media (max-width: 800px) {
     .intro-section {
         flex-direction: column;
@@ -487,6 +427,3 @@ footer nav {
         height: 200px;
     }
 }
-
-
-
