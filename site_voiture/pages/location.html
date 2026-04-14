@@ -1,266 +1,186 @@
 <!DOCTYPE html>
 <html lang="fr">
-<!-- 
-    Déclare que le document utilise le standard HTML5.
-    L’attribut lang="fr" indique que le contenu principal est en français,
-    ce qui aide les navigateurs, moteurs de recherche et lecteurs d'écran.
--->
-
 <head>
-    <!-- 
-        La balise <head> contient toutes les informations invisibles pour l’utilisateur :
-        - encodage
-        - titre de la page
-        - liens vers les fichiers CSS
-        - scripts éventuels
-        - métadonnées SEO
-    -->
-
     <meta charset="UTF-8">
-    <!-- 
-        Définit l'encodage UTF‑8, indispensable pour afficher correctement
-        les accents et caractères spéciaux utilisés en français.
-    -->
-
-    <title>Location de voitures – Premium Cars</title>
-    <!-- 
-        Titre affiché dans l’onglet du navigateur.
-        Important pour l'identité du site et le référencement.
-    -->
-
+    <title>RentaKar</title>
     <link rel="stylesheet" href="/css/style.css">
-    <!-- 
-        Lien vers ton fichier CSS principal.
-        Le chemin /css/style.css signifie que le dossier "css" est à la racine du site.
-    -->
 </head>
-
 <body>
-<!-- 
-    Tout ce que l’utilisateur voit se trouve dans <body>.
-    On y place le header, la navigation, le contenu principal, le footer, etc.
--->
 
 <header class="header">
-    <!-- 
-        En‑tête du site.
-        Contient le nom du service et un sous‑titre.
-        Le style visuel est géré dans ton CSS.
-    -->
-
-    <h1>🚗 Premium Car Rental</h1>
-    <!-- 
-        Titre principal de la page.
-        L’emoji voiture ajoute une touche visuelle sympa.
-    -->
-
-    <p>Découvrez nos véhicules disponibles à la location</p>
-    <!-- 
-        Sous‑titre explicatif.
-        Permet d’introduire le contenu de la page.
-    -->
+    <h1> RentaKar</h1>
+    <p>Trouver une voiture qui correspond à votre style </p>
 </header>
 
-<!-- Lien de navigation -->
 <nav class="navbar">
-    <!-- 
-        Barre de navigation principale.
-        Permet de se déplacer entre les pages du site.
-        Les liens sont stylisés via la classe .navbar dans ton CSS.
-    -->
-
     <a href="../index.html">Accueil</a>
-    <!-- 
-        Lien vers la page d’accueil.
-        ../ signifie "remonter d’un dossier".
-    -->
-
     <a href="location.html">Locations</a>
-    <!-- 
-        Lien vers la page actuelle (liste des voitures à louer).
-    -->
-
     <a href="login.html">Login</a>
-    <!-- 
-        Lien vers la page de connexion.
-        Peut servir pour un espace admin ou client.
-    -->
 </nav>
 
 <main>
-<!-- 
-    Balise <main> : contient le contenu principal unique de la page.
-    Très utile pour l’accessibilité et le SEO.
--->
-
 <section class="grid-voitures">
-    <!-- 
-        Section contenant toutes les cartes de voitures.
-        La classe grid-voitures applique une grille responsive via CSS.
-    -->
-
-    <!-- Carte voiture -->
     <div class="carte">
-        <!-- 
-            Une carte représente un véhicule.
-            Elle contient une image, un titre et un bouton descriptif.
-        -->
-
         <img src="/images/clio.jpg" alt="Renault Clio 5">
-        <!-- 
-            Image du véhicule.
-            L’attribut alt est important pour l’accessibilité.
-        -->
-
         <h3>Renault Clio</h3>
-        <!-- 
-            Nom du modèle affiché sous l’image.
-        -->
-
         <button onclick="ouvrirPopup('clio')">Descriptif</button>
-        <!-- 
-            Bouton qui ouvre une popup descriptive.
-            Il appelle la fonction JS ouvrirPopup() avec l’identifiant du modèle.
-        -->
+        <button class="bouton-louer" onclick="ouvrirPopupLocation('clio')">Louer</button>
     </div>
-
-    <!-- 
-        Toutes les cartes suivantes suivent exactement la même structure.
-        Seuls changent :
-        - l’image
-        - le nom du modèle
-        - l’identifiant passé à ouvrirPopup()
-    -->
 
     <div class="carte">
         <img src="/images/208.jpg" alt="Peugeot 208">
         <h3>Peugeot 208</h3>
         <button onclick="ouvrirPopup('208')">Descriptif</button>
+        <button class="bouton-louer" onclick="ouvrirPopupLocation('208')">Louer</button>
     </div>
 
     <div class="carte">
         <img src="/images/Hyundai-i20.png" alt="Hyundai-i20">
         <h3>Hyundai i20</h3>
         <button onclick="ouvrirPopup('i20')">Descriptif</button>
+        <button class="bouton-louer" onclick="ouvrirPopupLocation('i20')">Louer</button>
     </div>
 
     <div class="carte">
         <img src="/images/Yaris.jpg" alt="Toyota Yaris">
         <h3>Toyota Yaris</h3>
         <button onclick="ouvrirPopup('yaris')">Descriptif</button>
+        <button class="bouton-louer" onclick="ouvrirPopupLocation('yaris')">Louer</button>
     </div>
 
     <div class="carte">
         <img src="/images/vwpolo.png" alt="Volkswagen Polo">
         <h3>Volkswagen Polo</h3>
         <button onclick="ouvrirPopup('polo')">Descriptif</button>
+        <button class="bouton-louer" onclick="ouvrirPopupLocation('polo')">Louer</button>
     </div>
 
     <div class="carte">
         <img src="/images/ford-focus.jpg" alt="Ford Focus">
         <h3>Ford Focus</h3>
         <button onclick="ouvrirPopup('focus')">Descriptif</button>
+        <button class="bouton-louer" onclick="ouvrirPopupLocation('focus')">Louer</button>
     </div>
 
     <div class="carte">
         <img src="/images/classe-c.jpg" alt="Mercedes-Benz Classe C">
         <h3>Mercedes-Benz Classe C</h3>
         <button onclick="ouvrirPopup('classec')">Descriptif</button>
+        <button class="bouton-louer" onclick="ouvrirPopupLocation('classec')">Louer</button>
     </div>
 
     <div class="carte">
         <img src="/images/classe-e.jpg" alt="Mercedes-Benz Classe E">
         <h3>Mercedes-Benz Classe E</h3>
         <button onclick="ouvrirPopup('classee')">Descriptif</button>
+        <button class="bouton-louer" onclick="ouvrirPopupLocation('classee')">Louer</button>
     </div>
 
     <div class="carte">
         <img src="/images/bmw-serie3.jpg" alt="BMW Série 3">
         <h3>BMW Série 3</h3>
         <button onclick="ouvrirPopup('serie3')">Descriptif</button>
+        <button class="bouton-louer" onclick="ouvrirPopupLocation('serie3')">Louer</button>
     </div>
 
     <div class="carte">
         <img src="/images/audi-a4.jpg" alt="Audi A4">
         <h3>Audi A4</h3>
         <button onclick="ouvrirPopup('a4')">Descriptif</button>
+        <button class="bouton-louer" onclick="ouvrirPopupLocation('a4')">Louer</button>
     </div>
 
     <div class="carte">
         <img src="/images/bmw-x1.jpg" alt="BMW X1">
         <h3>BMW X1</h3>
         <button onclick="ouvrirPopup('x1')">Descriptif</button>
+        <button class="bouton-louer" onclick="ouvrirPopupLocation('x1')">Louer</button>
     </div>
 
     <div class="carte">
         <img src="/images/audi-q5.jpg" alt="Audi Q5">
         <h3>Audi Q5</h3>
         <button onclick="ouvrirPopup('q5')">Descriptif</button>
+        <button class="bouton-louer" onclick="ouvrirPopupLocation('q5')">Louer</button>
     </div>
 
     <div class="carte">
         <img src="/images/porsche-911.jpg" alt="Porsche 911">
         <h3>Porsche 911</h3>
         <button onclick="ouvrirPopup('p911')">Descriptif</button>
+        <button class="bouton-louer" onclick="ouvrirPopupLocation('p911')">Louer</button>
     </div>
 
     <div class="carte">
         <img src="/images/audi-r8.jpg" alt="Audi R8">
         <h3>Audi R8</h3>
         <button onclick="ouvrirPopup('r8')">Descriptif</button>
+        <button class="bouton-louer" onclick="ouvrirPopupLocation('r8')">Louer</button>
     </div>
 
     <div class="carte">
         <img src="/images/mercedes-amg-gt.jpg" alt="Mercedes-AMG GT">
         <h3>Mercedes-AMG GT</h3>
         <button onclick="ouvrirPopup('amggt')">Descriptif</button>
+        <button class="bouton-louer" onclick="ouvrirPopupLocation('amggt')">Louer</button>
     </div>
-
 </section>
-
 </main>
 
-<!-- Popup -->
+<!-- Popup Descriptif -->
 <div id="popup" class="popup">
-    <!-- 
-        Conteneur global du popup.
-        Il est masqué par défaut via CSS (display:none).
-        Quand on clique sur un bouton, JS change display en "flex".
-    -->
-
     <div class="popup-content">
-        <!-- 
-            Contenu interne du popup :
-            - fond blanc
-            - bordure
-            - arrondis
-            - zone où sera injecté le texte descriptif
-        -->
-
         <span class="close" onclick="fermerPopup()">&times;</span>
-        <!-- 
-            Bouton de fermeture du popup.
-            Le symbole × est généré via &times;.
-        -->
-
         <div id="contenu-popup"></div>
-        <!-- 
-            Zone où JS insère dynamiquement la description du véhicule.
-        -->
     </div>
 </div>
 
-<!-- SCRIPT COMPLET -->
+<!-- Popup Location -->
+<div id="popup-location" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="fermerPopupLocation()">&times;</span>
+        <h2 id="titre-location">Location : <span id="modele-location"></span></h2>
+        <form id="form-location">
+            <div class="form-group">
+                <label for="nom">Nom et Prénom :</label>
+                <input type="text" id="nom" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email :</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="telephone">Téléphone :</label>
+                <input type="tel" id="telephone" required>
+            </div>
+            <div class="form-group">
+                <label for="date-debut">Date de début :</label>
+                <input type="date" id="date-debut" required>
+            </div>
+            <div class="form-group">
+                <label for="date-fin">Date de fin :</label>
+                <input type="date" id="date-fin" required>
+            </div>
+            <div class="form-group">
+                <label for="assurance">Assurance :</label>
+                <select id="assurance" required>
+                    <option value="">Choisir une assurance</option>
+                    <option value="tous-risques">Tous risques</option>
+                    <option value="au-tiers">Au tiers</option>
+                    <option value="vol-incendie">Vol et incendie</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="bouton-confirm">Confirmer la location</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <script>
 /* -------------------------
    DESCRIPTIONS DES VOITURES
 -------------------------- */
-
-/*
-    Objet contenant toutes les descriptions.
-    Chaque clé correspond à l’identifiant passé dans ouvrirPopup().
-    Chaque valeur est un texte affiché dans la popup.
-*/
 const descriptions = {
     clio: "Renault Clio – Citadine polyvalente, idéale pour la ville et les trajets quotidiens. Très faible consommation, excellente maniabilité. Puissance : environ 90 ch.",
     208: "Peugeot 208 – Moderne, confortable et dynamique. Très agréable à conduire, parfaite pour un usage urbain et périurbain. Puissance : environ 100 ch.",
@@ -279,43 +199,41 @@ const descriptions = {
     amggt: "Mercedes-AMG GT – Coupé sportif hautes performances. Moteur V8 biturbo, conduite très dynamique. Puissance : environ 530 ch."
 };
 
-
 /* -------------------------
    POPUP DESCRIPTIF
 -------------------------- */
-
-/*
-    Fonction appelée lorsqu’on clique sur un bouton "Descriptif".
-    Elle :
-    - récupère la description correspondant au modèle
-    - l’insère dans la zone #contenu-popup
-    - affiche la popup en changeant display:none → display:flex
-*/
 function ouvrirPopup(modele) {
     const contenu = document.getElementById("contenu-popup");
     contenu.innerHTML = `<p>${descriptions[modele]}</p>`;
     document.getElementById("popup").style.display = "flex";
 }
 
-/*
-    Fonction qui ferme la popup.
-    Elle remet display:none sur le conteneur #popup.
-*/
 function fermerPopup() {
     document.getElementById("popup").style.display = "none";
 }
 
+/* -------------------------
+   POPUP LOCATION
+-------------------------- */
+function ouvrirPopupLocation(modele) {
+    document.getElementById("modele-location").textContent = descriptions[modele].split(' – ')[0];
+    document.getElementById("popup-location").style.display = "flex";
+}
+
+function fermerPopupLocation() {
+    document.getElementById("popup-location").style.display = "none";
+}
+
+// Gestion du formulaire de location
+document.getElementById("form-location").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Votre demande de location a été enregistrée ! Nous vous contacterons bientôt.");
+    fermerPopupLocation();
+    this.reset();
+});
 </script>
 
-</body>
-
-<!-- Footer -->
-<footer> 
-    <!-- 
-        Pied de page du site.
-        Contient des liens secondaires (FAQ, mentions légales, etc.).
-    -->
-
+<footer>
     <nav>
         <a href="faq.html">FAQ</a>
         <a href="mentions.html">Mentions légales</a>
@@ -323,5 +241,5 @@ function fermerPopup() {
     </nav>
 </footer>
 
+</body>
 </html>
-
