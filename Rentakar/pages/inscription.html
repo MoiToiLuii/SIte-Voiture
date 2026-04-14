@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header></header>
+
+<nav>
+    <a href="../index.html">Accueil</a>
+    <a href="location.html">Location</a>
+    <a href="login.html">Connexion</a>
+</nav>
+
+<main>
+
+<section class="carte">
+
+    <h1>Inscription</h1>
+
+    <form action="../PHP/inscription.php" method="POST">
+
+        <label>Nom :</label>
+        <input type="text" name="nom" required>
+
+        <label>Email :</label>
+        <input type="email" name="email" required>
+
+        <label>Mot de passe :</label>
+        <input type="password" name="mot_de_passe" required>
+
+        <input type="submit" value="S'inscrire" class="bouton">
+
+    </form>
+
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer> 
+    <!-- 
+        Pied de page du site.
+        Contient des liens secondaires (FAQ, mentions légales, etc.).
+    -->
+
+    <nav>
+        <a href="faq.html">FAQ</a>
+        <a href="mentions.html">Mentions légales</a>
+        <a href="information.html">Divers information</a>
+    </nav>
+</footer>
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>
