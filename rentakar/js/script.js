@@ -58,6 +58,30 @@ const descriptions = {
 };
 
 
+/* =========================
+   TARIFS PAR MODÈLE
+========================= */
+
+const tarifs = {
+    clio: 45,
+    "208": 50,
+    i20: 48,
+    yaris: 47,
+    polo: 52,
+    focus: 55,
+    classec: 90,
+    classee: 110,
+    serie3: 95,
+    a4: 100,
+    x1: 120,
+    q5: 130,
+    p911: 350,
+    r8: 500,
+    amggt: 600
+};
+
+
+
 
 /* =========================
    POPUP DESCRIPTION (SAFE)
@@ -100,18 +124,61 @@ function ouvrirPopupLocation(modele) {
     const popup = document.getElementById("popup-location");
     const modeleLocation = document.getElementById("modele-location");
     const inputVoiture = document.getElementById("voiture");
+    const tarifEl = document.getElementById("tarif-location");
 
-    if (!popup || !modeleLocation || !inputVoiture) return;
-
+    if (!popup || !modeleLocation || !inputVoiture || !tarifEl) return;
     if (!descriptions[modele]) return;
 
     popup.style.display = "flex";
     modeleLocation.textContent = descriptions[modele].split("–")[0];
     inputVoiture.value = modele;
+
+    tarifEl.textContent = tarifs[modele] + " € / jour";
+
+    calculerTotal();
 }
 
 function fermerPopupLocation() {
     const popup = document.getElementById("popup-location");
     if (popup) popup.style.display = "none";
 }
+
+
+/* =========================
+   CALCUL AUTOMATIQUE DU TOTAL
+========================= */
+
+function calculerTotal() {
+    const dateDebut = document.querySelector("input[name='date_debut']").value;
+    const dateFin = document.querySelector("input[name='date_fin']").value;
+    const modele = document.getElementById("voiture").value;
+    const totalEl = document.getElementById("total-location");
+
+    if (!dateDebut || !dateFin || !modele) return;
+
+    const debut = new Date(dateDebut);
+    const fin = new Date(dateFin);
+
+    const diff = fin - debut;
+    const jours = diff / (1000 * 60 * 60 * 24);
+
+    if (jours <= 0) {
+        totalEl.textContent = "Dates invalides";
+        return;
+    }
+
+    const prixJour = tarifs[modele];
+    const total = prixJour * jours;
+
+    totalEl.textContent = total + " €";
+}
+
+
+// Mise à jour automatique quand les dates changent
+document.addEventListener("input", function(e) {
+    if (e.target.name === "date_debut" || e.target.name === "date_fin") {
+        calculerTotal();
+    }
+});
+
 
