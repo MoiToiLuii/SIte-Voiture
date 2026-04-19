@@ -1,11 +1,29 @@
+<?php
+// ============================================================
+// PAGE MENTIONS LÉGALES – mentions.php
+// Protégée par session : l'utilisateur doit être connecté.
+// Affiche les mentions légales du site.
+// ============================================================
+
+session_start();
+
+// ── Protection : si non connecté, retour au login ────────────
+if (!isset($_SESSION['user'])) {
+    header("Location: login.html");
+    exit;
+}
+
+// Nom de l'utilisateur connecté (affiché dans la nav)
+$nom_utilisateur = htmlspecialchars($_SESSION['user']);
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Mentions légales – Site Voiture</title>
+    <title>Mentions légales – RentaKar</title>
     <!-- Feuille de style principale -->
     <link rel="stylesheet" href="../css/style.css">
-    <style> header        { background-image: url("../images/Logo.png"); } </style>
+    <style> header { background-image: url("../images/Logo.png"); } </style>
 </head>
 
 <body>
@@ -13,15 +31,15 @@
 <!-- En-tête de la page -->
 <header>
     <h1>Mentions légales</h1>
-   
 </header>
 
 <!-- Barre de navigation principale -->
 <nav>
     <a href="../index.php">Accueil</a>
     <a href="location.php">Locations</a>
-    <a href="login.html">Login</a>
-
+    <a href="mes_locations.php">Mes locations</a>
+    <span style="color:#4A7FA7; font-weight:bold;">👤 <?= $nom_utilisateur ?></span>
+    <a href="../php/logout.php">Déconnexion</a>
 </nav>
 
 <!-- Contenu principal de la page -->
@@ -33,7 +51,7 @@
         <strong>Site Voiture</strong><br>
         Projet étudiant – Location et présentation de véhicules.<br>
         Adresse : Nanterre, France<br>
-        Email : contact@sitevoiture.fr 
+        Email : contact@sitevoiture.fr
     </p>
 
     <!-- Section 2 : informations sur l'hébergeur -->
@@ -41,7 +59,7 @@
     <p>
         Le site est hébergé par :<br>
         <strong>Nanterre Université</strong><br>
-        Téléphone : 01 23 45 67 89 
+        Téléphone : 01 23 45 67 89
     </p>
 
     <!-- Section 3 : droits sur le contenu du site -->
@@ -54,7 +72,7 @@
     <!-- Section 4 : politique de gestion des données personnelles -->
     <h2>4. Données personnelles</h2>
     <p>
-        Ce site ne collecte aucune donnée personnelle sensible.  
+        Ce site ne collecte aucune donnée personnelle sensible.
         Les informations éventuellement transmises via les formulaires ne sont utilisées que dans le cadre du projet.
     </p>
 
@@ -68,11 +86,11 @@
 </main>
 
 <!-- Footer -->
-<footer> 
+<footer>
     <nav>
-        <a href="faq.html">FAQ</a>
-        <a href="mentions.html">Mentions légales</a>
-        <a href="information.html">Divers information</a>
+        <a href="faq.php">FAQ</a>
+        <a href="mentions.php">Mentions légales</a>
+        <a href="information.php">Divers information</a>
     </nav>
 </footer>
 
