@@ -25,7 +25,7 @@ Style général du body :
 - line-height pour améliorer la lisibilité
 */
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Didot", "Garamond", "Georgia", serif;
     background-color: #f5f5f5;
     color: #1A3D63;
     line-height: 1.6;
@@ -75,6 +75,19 @@ header .slogan {
     font-weight: bold;
     color: #4A7FA7;
 }
+
+
+
+/* Slogan spécifique à la page location */
+header .slogan-location {
+    position: absolute;
+    top: 55px;          /* sous RentaKar */
+    left: 20px;         /* aligné avec le titre */
+    font-size: 18px;
+    font-weight: bold;
+    color: #4A7FA7;
+}
+
 
 /* -------------------------------------------------------------------------- */
 /* ------------------------------- NAVIGATION -------------------------------- */
@@ -668,4 +681,12 @@ Sur mobile :
 .btn-green:hover {
     background: #27ae60;
     transform: scale(1.02);
+}
+
+/* Tarif dans le popup */
+.tarif {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0A1931;
+    margin-top: 5px;
 }
