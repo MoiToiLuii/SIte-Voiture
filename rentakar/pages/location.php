@@ -15,6 +15,11 @@ if (!isset($_SESSION['user'])) {
 
 // Nom de l'utilisateur connecté (affiché dans la nav)
 $nom_utilisateur = htmlspecialchars($_SESSION['user']);
+
+// ── Token CSRF pour sécuriser le formulaire ────────────────
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -22,19 +27,18 @@ $nom_utilisateur = htmlspecialchars($_SESSION['user']);
     <meta charset="UTF-8">
     <title>RentaKar – Locations</title>
     <link rel="stylesheet" href="../css/style.css">
-    <style> header        { background-image: url("../images/Logo.png"); } </style>
+    <style> header { background-image: url("../images/Logo.png"); } </style>
 </head>
 
 <body>
 
-<header>
+<header class="header">
     <h1>RentaKar</h1>
-    <p class="slogan">Le meilleur ou rien</p>
-    
+    <p class="slogan-location">Trouver une voiture qui correspond à votre style</p>
 </header>
 
 <!-- ── Navigation avec liens personnalisés ── -->
-<nav>
+<nav class="navbar">
     <a href="../index.php">Accueil</a>
     <a href="location.php">Locations</a>
     <a href="mes_locations.php">Mes locations</a>
@@ -45,11 +49,6 @@ $nom_utilisateur = htmlspecialchars($_SESSION['user']);
 <main>
 
     <!-- ── Popup descriptif voiture ── -->
-    <!--
-        Affiché quand l'utilisateur clique sur "Descriptif".
-        Le titre (id="titre-descriptif") et le texte (id="texte-descriptif")
-        sont remplis dynamiquement par la fonction ouvrirPopup() dans script.js.
-    -->
     <div id="popup-descriptif" class="popup">
         <div class="popup-content modern-popup">
             <span class="close" onclick="fermerPopup()">&times;</span>
@@ -59,12 +58,6 @@ $nom_utilisateur = htmlspecialchars($_SESSION['user']);
     </div>
 
     <!-- ── Grille de véhicules ── -->
-    <!--
-        Chaque .carte représente un modèle de voiture.
-        - Le src des images utilise un chemin relatif depuis la racine XAMPP.
-        - onclick="ouvrirPopup('cle')" → affiche le descriptif dans le popup
-        - onclick="ouvrirPopupLocation('cle')" → ouvre le formulaire de réservation
-    -->
     <section class="grid-voitures">
 
         <div class="carte">
@@ -177,11 +170,6 @@ $nom_utilisateur = htmlspecialchars($_SESSION['user']);
 </main>
 
 <!-- ── Popup formulaire de location ── -->
-<!--
-    Affiché quand l'utilisateur clique sur "Louer".
-    Le champ caché "voiture" est rempli par ouvrirPopupLocation() dans script.js.
-    Le formulaire soumet vers reservation.php qui insère en BDD.
--->
 <div id="popup-location" class="popup">
     <div class="popup-content modern-popup">
 
@@ -192,6 +180,7 @@ $nom_utilisateur = htmlspecialchars($_SESSION['user']);
 
             <!-- Champ caché : contient la clé du modèle (ex: 'clio') -->
             <input type="hidden" name="voiture" id="voiture">
+            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 
             <div class="form-group">
                 <label>Nom et Prénom :</label>
@@ -210,7 +199,6 @@ $nom_utilisateur = htmlspecialchars($_SESSION['user']);
 
             <div class="form-group">
                 <label>Date de début :</label>
-                <!-- L'attribut min est défini par JS pour bloquer les dates passées -->
                 <input type="date" name="date_debut" id="date_debut" required>
             </div>
 
@@ -243,9 +231,17 @@ $nom_utilisateur = htmlspecialchars($_SESSION['user']);
                 </select>
             </div>
 
-            <button type="submit" class="btn-green">Confirmer la location</button>
+            <div class="form-group">
+                <label>Tarif :</label>
+                <p id="tarif-location" class="tarif"></p>
+            </div>
+
+            <button type="submit" class="btn-green">
+                Confirmer la location
+            </button>
 
         </form>
+
     </div>
 </div>
 
@@ -293,7 +289,6 @@ $nom_utilisateur = htmlspecialchars($_SESSION['user']);
             document.getElementById('nb-jours').textContent = diffJours;
             recap.style.display = 'block';
         } else {
-            // Date de fin avant ou égale à la date de début : on masque
             recap.style.display = 'none';
         }
     }
