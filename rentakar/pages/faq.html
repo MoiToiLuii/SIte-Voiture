@@ -1,12 +1,30 @@
+<?php
+// ============================================================
+// PAGE FAQ – faq.php
+// Protégée par session : l'utilisateur doit être connecté.
+// Affiche les questions fréquentes.
+// ============================================================
+
+session_start();
+
+// ── Protection : si non connecté, retour au login ────────────
+if (!isset($_SESSION['user'])) {
+    header("Location: login.html");
+    exit;
+}
+
+// Nom de l'utilisateur connecté (affiché dans la nav)
+$nom_utilisateur = htmlspecialchars($_SESSION['user']);
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
-    <title>FAQ – Site Voiture</title>
+    <title>FAQ – RentaKar</title>
     <!-- Feuille de style principale -->
     <link rel="stylesheet" href="../css/style.css">
-    <style> header        { background-image: url("../images/Logo.png"); } </style>
+    <style> header { background-image: url("../images/Logo.png"); } </style>
 </head>
 
 <body>
@@ -14,14 +32,15 @@
 <!-- En-tête de la page -->
 <header>
     <h1>FAQ – Questions fréquentes</h1>
-    
 </header>
 
 <!-- Barre de navigation principale -->
 <nav>
     <a href="../index.php">Accueil</a>
     <a href="location.php">Locations</a>
-    <a href="login.html">Login</a>
+    <a href="mes_locations.php">Mes locations</a>
+    <span style="color:#4A7FA7; font-weight:bold;">👤 <?= $nom_utilisateur ?></span>
+    <a href="../php/logout.php">Déconnexion</a>
 </nav>
 
 <!-- Contenu principal : liste des questions/réponses fréquentes -->
@@ -69,7 +88,7 @@
 <!-- Pied de page avec liens secondaires -->
 <footer>
     <nav>
-        <a href="faq.html">FAQ</a>
+        <a href="faq.php">FAQ</a>
         <a href="mentions.html">Mentions légales</a>
         <a href="information.html">Divers information</a>
     </nav>
