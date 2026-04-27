@@ -1,0 +1,326 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{longtable}
+\geometry{margin=2.5cm}
+
+\title{Rapport de Projet \\ \textbf{RentaKar – Plateforme Web de Location de Voitures}}
+\author{Nom Prénom \\ L2 Informatique – Université Paris Nanterre}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%--------------------------------------------------
+\section{Introduction}
+
+\subsection{Contexte}
+
+Avec la digitalisation des services, la location de véhicules est aujourd’hui largement accessible via des plateformes web. Ces systèmes permettent aux utilisateurs de réserver rapidement un véhicule selon leurs besoins.
+
+Dans ce contexte, nous avons développé \textbf{RentaKar}, une application web simulant un service de location de voitures moderne.
+
+\subsection{Présentation du projet}
+
+RentaKar est un site web dynamique permettant :
+\begin{itemize}
+    \item La consultation d’un catalogue de véhicules
+    \item L’interaction utilisateur via des interfaces modernes
+    \item La simulation de réservation
+    \item La gestion d’utilisateurs
+\end{itemize}
+
+Ce projet s’inscrit dans une logique d’apprentissage des technologies web et des bonnes pratiques de développement.
+
+\subsection{Objectifs détaillés}
+
+\begin{itemize}
+    \item Concevoir une application web fonctionnelle de bout en bout
+    \item Implémenter une interface ergonomique (UX/UI)
+    \item Mettre en place une architecture technique cohérente
+    \item Introduire des mécanismes de sécurité (authentification, validation)
+    \item Comprendre les interactions client-serveur
+\end{itemize}
+
+\subsection{Technologies utilisées}
+
+\begin{itemize}
+    \item HTML5 : structure sémantique
+    \item CSS3 : design, animations, responsive
+    \item JavaScript : interactivité (DOM, événements)
+    \item PHP : logique serveur
+    \item MySQL : persistance des données
+\end{itemize}
+
+%--------------------------------------------------
+\section{Présentation du site}
+
+\subsection{Description générale}
+
+RentaKar propose une interface intuitive permettant à l’utilisateur de naviguer facilement entre les différentes fonctionnalités.
+
+Le site est conçu selon les principes suivants :
+\begin{itemize}
+    \item Simplicité d’utilisation
+    \item Clarté visuelle
+    \item Rapidité d’accès aux informations
+\end{itemize}
+
+\subsection{Parcours utilisateur détaillé}
+
+\begin{enumerate}
+    \item Accès à la page d’accueil
+    \item Consultation des véhicules disponibles
+    \item Ouverture d’un descriptif détaillé (popup)
+    \item Simulation d’une réservation
+    \item Interaction avec le système d’avis
+\end{enumerate}
+
+\subsection{Expérience utilisateur (UX)}
+
+\begin{itemize}
+    \item Navigation fluide
+    \item Feedback visuel (hover, animations)
+    \item Accessibilité (structure HTML claire)
+\end{itemize}
+
+%--------------------------------------------------
+\section{Fonctionnalités principales}
+
+\subsection{Affichage dynamique des véhicules}
+
+Les véhicules sont affichés sous forme de cartes :
+\begin{itemize}
+    \item Image optimisée
+    \item Nom du véhicule
+    \item Bouton interactif
+\end{itemize}
+
+\subsection{Système de popup}
+
+Le système de popup repose sur JavaScript :
+\begin{itemize}
+    \item Injection dynamique de contenu
+    \item Manipulation du DOM
+    \item Gestion des événements utilisateur
+\end{itemize}
+
+\subsection{Avis clients dynamiques}
+
+\begin{itemize}
+    \item Rotation automatique des avis
+    \item Animation CSS (fade/slide)
+    \item Affichage des notes avec étoiles
+\end{itemize}
+
+\subsection{Authentification (extension future)}
+
+\begin{itemize}
+    \item Sessions PHP
+    \item Hashage bcrypt
+    \item Protection CSRF
+\end{itemize}
+
+%--------------------------------------------------
+\section{Architecture du site}
+
+\subsection{Organisation des fichiers}
+
+\begin{verbatim}
+/rentakar
+    index.php
+    location.php
+    login.php
+    register.php
+    admin.php
+    css/style.css
+    js/script.js
+    /images
+\end{verbatim}
+
+\subsection{Architecture logicielle}
+
+Le projet suit une séparation des responsabilités :
+
+\begin{itemize}
+    \item Interface (HTML/CSS)
+    \item Logique (JavaScript / PHP)
+    \item Données (MySQL)
+\end{itemize}
+
+\subsection{Communication client-serveur}
+
+\begin{itemize}
+    \item Requêtes HTTP
+    \item Traitement côté serveur (PHP)
+    \item Réponse HTML dynamique
+\end{itemize}
+
+%--------------------------------------------------
+\section{Base de données}
+
+\subsection{Modélisation}
+
+La base repose sur deux entités principales :
+\begin{itemize}
+    \item Utilisateurs
+    \item Réservations
+\end{itemize}
+
+\subsection{Structure des tables}
+
+\textbf{Utilisateurs}
+
+\begin{longtable}{|c|c|c|}
+\hline
+Champ & Type & Description \\
+\hline
+id & INT & Identifiant unique \\
+nom & VARCHAR & Nom \\
+email & VARCHAR & Email unique \\
+mot\_de\_passe & VARCHAR & Hash sécurisé \\
+role & ENUM & user/admin \\
+\hline
+\end{longtable}
+
+\textbf{Réservations}
+
+\begin{longtable}{|c|c|c|}
+\hline
+Champ & Type & Description \\
+\hline
+id & INT & Identifiant \\
+voiture & VARCHAR & Véhicule \\
+email & VARCHAR & Client \\
+date\_debut & DATE & Début \\
+date\_fin & DATE & Fin \\
+statut & ENUM & état \\
+\hline
+\end{longtable}
+
+\subsection{Optimisations possibles}
+
+\begin{itemize}
+    \item Indexation des champs
+    \item Clés étrangères
+    \item Normalisation (3NF)
+\end{itemize}
+
+%--------------------------------------------------
+\section{Conception UML}
+
+\subsection{Diagramme de cas d’utilisation}
+
+Acteurs :
+\begin{itemize}
+    \item Utilisateur
+    \item Administrateur
+\end{itemize}
+
+Fonctionnalités :
+\begin{itemize}
+    \item Consulter les voitures
+    \item Réserver
+    \item Gérer les réservations
+\end{itemize}
+
+\subsection{Diagramme de classes}
+
+Classes principales :
+
+\textbf{Utilisateur} : gestion des comptes
+
+\textbf{Voiture} : données des véhicules
+
+\textbf{Réservation} : lien utilisateur/voiture
+
+\subsection{Diagramme de séquence}
+
+Processus de réservation :
+\begin{enumerate}
+    \item L’utilisateur sélectionne une voiture
+    \item Envoie des données
+    \item Le serveur traite
+    \item La base enregistre
+\end{enumerate}
+
+%--------------------------------------------------
+\section{Interface du site}
+
+\subsection{Design}
+
+\begin{itemize}
+    \item Palette de couleurs cohérente
+    \item Typographie lisible
+    \item Interface moderne
+\end{itemize}
+
+\subsection{Responsive design}
+
+\begin{itemize}
+    \item Adaptation mobile
+    \item Media queries
+\end{itemize}
+
+\subsection{Accessibilité}
+
+\begin{itemize}
+    \item Balises HTML sémantiques
+    \item Texte alternatif
+\end{itemize}
+
+%--------------------------------------------------
+\section{Difficultés rencontrées}
+
+\begin{itemize}
+    \item Manipulation du DOM en JavaScript
+    \item Synchronisation front/back
+    \item Gestion des erreurs
+    \item Organisation du code
+\end{itemize}
+
+%--------------------------------------------------
+\section{Améliorations possibles}
+
+\begin{itemize}
+    \item Paiement en ligne sécurisé
+    \item API externe (Stripe, Maps)
+    \item Notifications email
+    \item Système de recherche avancé
+    \item Gestion complète des disponibilités
+    \item Dashboard admin avancé
+\end{itemize}
+
+%--------------------------------------------------
+\section{Conclusion}
+
+Ce projet représente une expérience complète en développement web.
+
+Il nous a permis de :
+\begin{itemize}
+    \item Comprendre une architecture web
+    \item Développer des fonctionnalités concrètes
+    \item Améliorer nos compétences techniques
+\end{itemize}
+
+RentaKar constitue une base solide pour un projet professionnel évolutif.
+
+%--------------------------------------------------
+\section{Bibliographie}
+
+\begin{itemize}
+    \item https://developer.mozilla.org
+    \item https://www.w3schools.com
+    \item Documentation PHP
+    \item Documentation MySQL
+\end{itemize}
+
+\end{document}
